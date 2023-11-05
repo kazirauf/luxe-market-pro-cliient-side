@@ -1,8 +1,14 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/lgo.png";
+import useAuth from "../../../hooks/useAuth";
 const Navbar = () => {
-  const [user, setUser] = useState("");
+ const {user, logOut} = useAuth();
+
+ const handleLogOut = () => {
+  logOut()
+  .then()
+  .catch()
+ }
   const links = (
     <>
       <li className="text-slate-900 text-lg font-bold">
@@ -28,7 +34,7 @@ const Navbar = () => {
               color: isActive ? "#c84fcb" : "",
             };
           }}
-          to="/addJob"
+          to="/addJobs"
         >
           Add Job
         </NavLink>
@@ -157,17 +163,17 @@ const Navbar = () => {
             />
           )}
           {user ? (
-            <button className="btn px-5 mr-3 py-2  rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
+            <button onClick={handleLogOut} className="btn px-5 mr-3 py-2  rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
               Log Out
             </button>
           ) : (
             <>
-              <button className="btn px-5 mr-3 py-2  rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
+              <Link to="/login" className="btn px-5 mr-3 py-2  rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
                 Login
-              </button>
-              <button className="btn px-5 mr-3 py-2  rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
+              </Link>
+              <Link to="/register" className="btn px-5 mr-3 py-2  rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
                 Register
-              </button>
+              </Link>
             </>
           )}
         </div>

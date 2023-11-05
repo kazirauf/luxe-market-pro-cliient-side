@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         <div>
-           <footer className="footer p-10 bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+           <footer className="footer lg:w-full md:w-full w-[320px] p-10 bg-gradient-to-r from-purple-500 to-pink-500 text-white">
     <nav>
         <header className="footer-title text-white">Services</header>
         <a className="link link-hover">Branding</a>
@@ -28,7 +28,7 @@ const Footer = () => {
             <label className="label">
                 <span className="label-text text-white">Enter your email address</span>
             </label>
-            <div className="relative">
+            <div className="relative mr-10">
                 <input type="text" placeholder="username@site.com" className="input input-bordered w-full pr-16" />
                 <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white absolute top-0 right-0 rounded-l-none">Submit</button>
             </div>

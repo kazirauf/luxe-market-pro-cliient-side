@@ -6,7 +6,7 @@ const UserComments = () => {
       <div className="carousel w-[1200px]">
         <div id="slide1" className="carousel-item relative w-full">
           <div className="">
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-20 gap-y-10 lg:ml-[85px] ml-16 ">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-20 gap-y-10 lg:ml-[85px] ml-7 ">
               <div className="card w-72 bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-xl">
                 <figure className="">
                   <img
@@ -52,7 +52,7 @@ const UserComments = () => {
                 <div className="card-body items-center text-center">
                   <h2 className="card-title">Natasa Pilo</h2>
                   <p>
-                    The company's standout product seems to be Luxe Market Pro
+                    The company standout product seems to be Luxe Market Pro
                     Market Places.
                   </p>
                   <div className="card-actions"></div>
@@ -77,7 +77,7 @@ const UserComments = () => {
         </div>
         <div id="slide2" className="carousel-item relative w-full">
           <div className="">
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-20 gap-y-10 lg:ml-[85px] ml-16 ">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-20 gap-y-10 lg:ml-[85px] ml-7 ">
               <div className="card w-72 bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-xl">
                 <figure className="">
                   <img
@@ -89,7 +89,7 @@ const UserComments = () => {
                 <div className="card-body items-center text-center">
                   <h2 className="card-title">Wintal Fread</h2>
                   <p>
-                  From my perspective, Luxe Market Pro Market Places is the company's standout achievement.
+                  From my perspective, Luxe Market Pro Market Places is the company standout achievement.
                   </p>
                   <div className="card-actions"></div>
                 </div>
@@ -122,7 +122,7 @@ const UserComments = () => {
                 <div className="card-body items-center text-center">
                   <h2 className="card-title">Nodal Shek</h2>
                   <p>
-                    Luxe Market Pro Market Places is, to me, the company's most
+                    Luxe Market Pro Market Places is, to me, the company most
                     outstanding achievement.
                   </p>
                   <div className="card-actions"></div>
@@ -147,7 +147,7 @@ const UserComments = () => {
         </div>
         <div id="slide3" className="carousel-item relative w-full">
           <div className="">
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-20 gap-y-10 lg:ml-[85px] ml-16 ">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-20 gap-y-10 lg:ml-[85px] ml-7 ">
               <div className="card w-72 bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-xl">
                 <figure className="">
                   <img
@@ -159,7 +159,7 @@ const UserComments = () => {
                 <div className="card-body items-center text-center">
                   <h2 className="card-title">Mario Shon</h2>
                   <p>
-                    I believe Luxe Market Pro Market Places is the company's
+                    I believe Luxe Market Pro Market Places is the company
                     most exceptional product.
                   </p>
                   <div className="card-actions"></div>
@@ -177,7 +177,7 @@ const UserComments = () => {
                   <h2 className="card-title">Mariya Gande</h2>
                   <p>
                     In my view, Luxe Market Pro Market Places stands out as the
-                    company's most impressive offering.
+                    company most impressive offering.
                   </p>
                   <div className="card-actions"></div>
                 </div>
