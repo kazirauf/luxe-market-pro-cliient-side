@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const TabItems = ({item}) => {
     const {jobTitle, email, _id, deadline, description, minimumPrice, maximumPrice, category} = item;
@@ -10,7 +11,7 @@ const TabItems = ({item}) => {
     <p className="font-bold">Price range: ${minimumPrice}-${maximumPrice}</p>
     <p >{description}</p>
     <div className="card-actions justify-end">
-      <button className="btn  bg-gradient-to-r from-purple-500 to-pink-500 text-white">Bid now</button>
+      <Link to={`/jobsDetails/${_id}`}  className="btn  bg-gradient-to-r from-purple-500 to-pink-500 text-white">Bid now</Link>
     </div>
   </div>
 </div>
