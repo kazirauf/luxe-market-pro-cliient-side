@@ -1,10 +1,13 @@
-import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
-const AddJobs = () => {
+const UpdateJobs = () => {
     const {user} = useAuth()
-    const handleAddProduct = (event) => {
+    const allData = useLoaderData()
+    const { _id,  maximumPrice, deadline, jobTitle, description, minimumPrice, category} = allData;
+    const handleUpdateJobs = (event) => {
         event.preventDefault()
           const form = event.target;
           const email = form.email.value;
@@ -14,35 +17,36 @@ const AddJobs = () => {
           const category = form.category.value;
           const minimumPrice = form.minimumPrice.value;
           const maximumPrice = form.maximumPrice.value;
-          const product = {email, jobTitle, deadline, description, category, minimumPrice, maximumPrice}
-          console.log(product);
+          const updateProduct = {maximumPrice, deadline, jobTitle, email, description, minimumPrice, category}
+          
     
-          fetch(`http://localhost:5000/addJobs`, {
-             method: 'POST',
+          fetch(`http://localhost:5000/allJobs/${_id}`, {
+             method: 'PUT',
              headers: {
                 'content-type': 'application/json'
              },
-             body: JSON.stringify(product)
+             body: JSON.stringify(updateProduct)
           })
           .then(res => res.json())
           .then(data => {
             console.log(data);
-            if(data.insertedId) {
+            if(data.modifiedCount > 0) {
               Swal.fire({
                 title: 'success!',
-                text: 'job added successfully',
+                text: 'job update successfully',
                 icon: 'success',
-                confirmButtonText: 'Done'
+                confirmButtonText: 'OK'
               })
             }
           })
     
         }
+   
     return (
         <div>
-        <div  className="min-h-screen flex items-center justify-center bg-purple-100">
-<form onSubmit={handleAddProduct} className="bg-white p-8 rounded-lg shadow-lg py-10 w-[1000px]">
-  <h1 className="text-center text-purple-700 font-semibold text-2xl">Add Jobs</h1>
+              <div  className="min-h-screen flex items-center justify-center bg-purple-100">
+<form onSubmit={handleUpdateJobs} className="bg-white p-8 rounded-lg shadow-lg py-10 w-[1000px]">
+  <h1 className="text-center text-purple-700 font-semibold text-2xl">Update Jobs</h1>
   <div  className="mt-6 lg:flex gap-5">
 <div className="flex-1">
 <div className="py-3">
@@ -63,6 +67,7 @@ const AddJobs = () => {
       className="w-full px-4 py-2 text-gray-700 bg-gray-200 rounded-full focus:outline-none focus:border-purple-400 focus:bg-white"
       type="text"
       placeholder=" Job title"
+      defaultValue={jobTitle}
       name="jobTitle"
       required
     />
@@ -73,6 +78,7 @@ const AddJobs = () => {
       className="w-full px-4 py-2 text-gray-700 bg-gray-200 rounded-full focus:outline-none focus:border-purple-400 focus:bg-white"
       type="date"
       placeholder="Job Deadline"
+      defaultValue={deadline}
       name="deadline"
       required
     />
@@ -84,6 +90,7 @@ const AddJobs = () => {
       type="text"
       placeholder="your job description"
       name="description"
+      defaultValue={description}
       required
     />
    </div>
@@ -94,6 +101,7 @@ const AddJobs = () => {
       <select
                   className="w-full px-4 py-2 text-gray-700 bg-gray-200 rounded-full focus:outline-none focus:border-purple-400 focus:bg-white"
                   name="category"
+                  defaultValue={category}
                 >
                   <option value="Web Development">Web Development</option>
                   <option value="Digital Marketing">Digital Marketing</option>
@@ -107,6 +115,7 @@ const AddJobs = () => {
       type="text"
       placeholder="your minimum price"
       name="minimumPrice"
+      defaultValue={minimumPrice}
       required
     />
      
@@ -117,6 +126,7 @@ const AddJobs = () => {
       className="w-full px-4 py-2 text-gray-700 bg-gray-200 rounded-full focus:outline-none focus:border-purple-400 focus:bg-white"
       type="text"
       placeholder="your maximum price"
+      defaultValue={maximumPrice}
       name="maximumPrice"
       required
     />
@@ -127,14 +137,13 @@ const AddJobs = () => {
   </div>
  <div className="flex justify-center">
   
- <button   className="w-full mt-4 py-3 lg:px-72 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">Add Job</button>
+ <button   className="w-full mt-4 py-3 lg:px-72 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">Update Job</button>
  </div>
          
 </form>
 </div>
-
-  </div>
+        </div>
     );
 };
 
-export default AddJobs;
+export default UpdateJobs;
