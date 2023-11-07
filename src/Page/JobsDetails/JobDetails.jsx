@@ -24,7 +24,7 @@ const JobDetails = () => {
       const deadline = form.deadline.value;
       const email = form.email.value;
       const buyer_email = form.buyer_email.value;
-      const product = {price, deadline, buyer_email, email}
+      const product = {price, deadline, buyer_email, email, jobTitle}
       console.log(product);
 
       fetch(`http://localhost:5000/jobsBids`, {
