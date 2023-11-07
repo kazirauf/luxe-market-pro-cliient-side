@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const AddJobs = () => {
     const {user} = useAuth()
@@ -124,11 +125,11 @@ const AddJobs = () => {
  </div>
    
   </div>
-  <button
-            className="w-full mt-4 py-3 px-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
-          >
-            Add Job
-          </button>
+ <div className="flex justify-center">
+  
+ <Link  to="/myPosted" className="w-full mt-4 py-3 lg:px-72 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">Add Job</Link>
+ </div>
+         
 </form>
 </div>
 

@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const JobDetails = () => {
   const data = useLoaderData();
@@ -15,6 +16,38 @@ const JobDetails = () => {
     maximumPrice,
     category,
   } = data;
+
+  const handleAddBid = (event) => {
+    event.preventDefault()
+      const form = event.target;
+      const price = form.price.value;
+      const deadline = form.deadline.value;
+      const email = form.email.value;
+      const buyer_email = form.buyer_email.value;
+      const product = {price, deadline, buyer_email, email}
+      console.log(product);
+
+      fetch(`http://localhost:5000/jobsBids`, {
+         method: 'POST',
+         headers: {
+            'content-type': 'application/json'
+         },
+         body: JSON.stringify(product)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if(data.insertedId) {
+          Swal.fire({
+            title: 'success!',
+            text: 'Bid added successfully in my bids page',
+            icon: 'success',
+            confirmButtonText: 'Done'
+          })
+        }
+      })
+
+    }
   return (
     <section className="bg-purple-100">
       <div>
@@ -32,7 +65,7 @@ const JobDetails = () => {
         </div>
 
         <div className="py-20 flex items-center justify-center ">
-          <form className="bg-white p-8 rounded-lg shadow-lg py-10 w-[1000px]">
+          <form onSubmit={handleAddBid} className="bg-white p-8 rounded-lg shadow-lg py-10 w-[1000px]">
             <h1 className="text-center text-purple-700 font-semibold text-2xl">
               Place your bid form
             </h1>
