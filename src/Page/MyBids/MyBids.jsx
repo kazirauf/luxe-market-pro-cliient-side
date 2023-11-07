@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const MyBids = () => {
     const {user} = useAuth()
+    const [status, setStatus] = useState("Complete");
     const [bids, setBids] = useState([])
+    console.log(bids);
     console.log(bids);
     const url = `http://localhost:5000/jobBids?email=${user?.email}`
     useEffect(() => {
@@ -15,6 +18,34 @@ const MyBids = () => {
         })
     }, [])
 
+    const handleComplete = (_id) => {
+        const updateJobs = {status}
+                  
+            
+                  fetch(`http://localhost:5000/jobsBids/${_id}`, {
+                     method: 'PUT',
+                     headers: {
+                        'content-type': 'application/json'
+                     },
+                     body: JSON.stringify(updateJobs)
+                  })
+                  .then(res => res.json())
+                  .then(data => {
+                    console.log(data)
+                    if(data.modifiedCount > 0) {
+                      Swal.fire({
+                        title: 'success!',
+                        text: 'request successfully',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                      })
+                    }
+                  })
+            
+                
+           
+        }
+
     return (
         <div>
     <div className="overflow-x-auto h-[800px] mx-3 mt-10">
@@ -25,7 +56,7 @@ const MyBids = () => {
                 <th>Jobs & Date</th>
                 <th>Price & Email</th>
                 <div className="lg:flex flex-col">
-                <th></th>
+                <th>Status</th>
                 <th></th>
                 </div>
                 
@@ -50,15 +81,25 @@ const MyBids = () => {
                     <br />
                     <span className="badge badge-ghost badge-sm">{t.email}</span>
                   </td>
-                 <div className="lg:flex-row grid grid-cols-1">
-                 <td>${t.price}</td>
-                  <th>
-                    <button  className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white btn-xs">
-                      Delete
-                    </button>
-                  
-                  </th> 
-                 </div>
+               <div className="flex">
+               <div className="lg:flex-row grid grid-cols-1">
+               
+               <th>
+                   {t.status}
+               </th> 
+              </div>
+              <div className="lg:flex-row grid grid-cols-1">
+            
+               <td >
+                  { t.status === "in progress"  || t.status === "Completed" ?
+                     <button onClick={() => handleComplete(t._id)} className="bg-gradient-to-r rounded-lg from-purple-500 to-pink-500 text-white btn-sm">Complete</button>
+                     :
+                     <button className="bg-gradient-to-r hidden rounded-lg from-purple-500 to-pink-500 text-white btn-sm">Complete</button>
+                  }
+               </td> 
+              </div>
+               </div>
+                 
                 </tr>
             )}
             </tbody>

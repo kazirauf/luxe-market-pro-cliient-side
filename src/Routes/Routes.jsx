@@ -9,12 +9,14 @@ import MyBids from "../Page/MyBids/MyBids";
 import MyPosted from "../Page/MyPosted/MyPosted";
 import UpdateJobs from "../Page/MyPosted/UpdateJobs";
 import BidRequests from "../Page/BidRequests/BidRequests";
+import Route404 from "./Route404";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <Route404></Route404>,
         children: [
             {
                 path: '/',

@@ -1,10 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const JobDetails = () => {
   const data = useLoaderData();
   const { user } = useAuth();
+  const [status, setStatus] = useState('Pending');
   console.log(data);
   const {
     jobTitle,
@@ -24,7 +26,7 @@ const JobDetails = () => {
       const deadline = form.deadline.value;
       const email = form.email.value;
       const buyer_email = form.buyer_email.value;
-      const product = {price, deadline, buyer_email, email, jobTitle}
+      const product = {price, deadline, buyer_email, status, email, jobTitle}
       console.log(product);
 
       fetch(`http://localhost:5000/jobsBids`, {
@@ -102,7 +104,7 @@ const JobDetails = () => {
                     className="w-full px-4 py-2 text-gray-700 bg-gray-200 rounded-full focus:outline-none focus:border-purple-400 focus:bg-white"
                     type="email"
                     placeholder="your email address"
-                    value={user.email}
+                    value={user?.email}
                     name="email"
                     required
                   />
@@ -123,7 +125,7 @@ const JobDetails = () => {
               </div>
             </div>
             {
-                user.email === email ? <button disabled className="w-full mt-4 py-3 px-4 rounded-full bg-gray-400 text-white text-center font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
+                user?.email === email ? <button disabled className="w-full mt-4 py-3 px-4 rounded-full bg-gray-400 text-white text-center font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
                 Bid on the project
               </button>
               :
