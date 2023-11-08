@@ -1,5 +1,7 @@
 import { ToastContainer, toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const {signIn, signInWithProvider} = useAuth()
@@ -43,6 +45,9 @@ const Login = () => {
    }
     return (
         <div>
+          <Helmet>
+            <title>Luxe Market Pro | Login</title>
+          </Helmet>
               <div  className="min-h-screen flex items-center justify-center bg-purple-100">
       <div className="bg-white w-96 p-8 rounded-lg shadow-lg py-10">
         <h1 className="text-center text-purple-700 font-semibold text-2xl">Login</h1>
@@ -78,8 +83,8 @@ const Login = () => {
           >
            <img className="w-7" src="https://seeklogo.com/images/G/google-2015-logo-65BBD07B01-seeklogo.com.png" alt="" />
           </button>
-          <p className="mt-4 text-center text-purple-400">
-
+          <p className="mt-4 text-center">
+                 You have not an account. Please <Link className="text-fuchsia-400 font-bold" to="/register">register</Link> now
           </p>
         </form>
       </div>

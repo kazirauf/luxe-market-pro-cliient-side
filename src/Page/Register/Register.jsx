@@ -1,6 +1,7 @@
 import { ToastContainer, toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 import { updateProfile } from "firebase/auth";
+import { Helmet } from "react-helmet-async";
 const Register = () => {
   const {signInWithProvider, createUser} = useAuth()
     const h = () => {
@@ -74,6 +75,9 @@ const Register = () => {
 
     return (
         <div>
+          <Helmet>
+            <title>Luxe Market Pro | Register</title>
+          </Helmet>
               <div className="min-h-screen flex items-center justify-center bg-purple-100">
       <div className="bg-white w-96 p-8 rounded-lg shadow-lg">
         <h1 className="text-center text-purple-700 font-semibold text-2xl">Register</h1>

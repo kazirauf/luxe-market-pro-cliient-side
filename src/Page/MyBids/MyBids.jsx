@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MyBids = () => {
     const {user} = useAuth()
-    const [status, setStatus] = useState("Complete");
     const [bids, setBids] = useState([])
+    const [isHidden, setIsHidden] = useState(false);
     console.log(bids);
     console.log(bids);
-    const url = `http://localhost:5000/jobBids?email=${user?.email}`
+    const url = `https://luxe-market-pro-server-side.vercel.app/jobBids?email=${user?.email}`
     useEffect(() => {
         fetch(url, {credentials: "include"})
         .then(res => res.json())
@@ -16,18 +17,21 @@ const MyBids = () => {
             console.log(data);
             setBids(data)
         })
-    }, [])
+    }, [url])
 
     const handleComplete = (_id) => {
-        const updateJobs = {status}
+    
+        setIsHidden(current => !current);
+    
+    
                   
             
-                  fetch(`http://localhost:5000/jobsBids/${_id}`, {
+                  fetch(`https://luxe-market-pro-server-side.vercel.app/jobsBids/${_id}`, {
                      method: 'PUT',
                      headers: {
                         'content-type': 'application/json'
                      },
-                     body: JSON.stringify(updateJobs)
+                     body: JSON.stringify({status: "Completed"})
                   })
                   .then(res => res.json())
                   .then(data => {
@@ -35,10 +39,15 @@ const MyBids = () => {
                     if(data.modifiedCount > 0) {
                       Swal.fire({
                         title: 'success!',
-                        text: 'request successfully',
+                        text: 'Completed successfully',
                         icon: 'success',
                         confirmButtonText: 'OK'
                       })
+                      const remaining = bids.filter(bid => bid._id !== _id)
+                      const updated = bids.find(bid => bid._id === _id)
+                      updated.status = "Completed"
+                      const newjobs = [updated, ...remaining];
+                      setBids(newjobs)
                     }
                   })
             
@@ -48,6 +57,9 @@ const MyBids = () => {
 
     return (
         <div>
+          <Helmet>
+            <title>Luxe Market Pro| My Bids</title>
+          </Helmet>
     <div className="overflow-x-auto h-[800px] mx-3 mt-10">
           <table className="table">
             {/* head */}
@@ -91,8 +103,8 @@ const MyBids = () => {
               <div className="lg:flex-row grid grid-cols-1">
             
                <td >
-                  { t.status === "in progress"  || t.status === "Completed" ?
-                     <button onClick={() => handleComplete(t._id)} className="bg-gradient-to-r rounded-lg from-purple-500 to-pink-500 text-white btn-sm">Complete</button>
+                  { t.status === "in progress"   ?
+                     <button  style={{ display: isHidden ? 'none' : 'block' }} onClick={() => handleComplete(t._id)} className="bg-gradient-to-r rounded-lg from-purple-500 to-pink-500 text-white btn-sm">Complete</button>
                      :
                      <button className="bg-gradient-to-r hidden rounded-lg from-purple-500 to-pink-500 text-white btn-sm">Complete</button>
                   }

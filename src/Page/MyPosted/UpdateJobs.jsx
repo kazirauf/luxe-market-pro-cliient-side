@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const UpdateJobs = () => {
@@ -20,7 +21,7 @@ const UpdateJobs = () => {
           const updateProduct = {maximumPrice, deadline, jobTitle, email, description, minimumPrice, category}
           
     
-          fetch(`http://localhost:5000/allJobs/${_id}`, {
+          fetch(`https://luxe-market-pro-server-side.vercel.app/allJobs/${_id}`, {
              method: 'PUT',
              headers: {
                 'content-type': 'application/json'
@@ -44,6 +45,9 @@ const UpdateJobs = () => {
    
     return (
         <div>
+          <Helmet>
+            <title>Luxe Market Pro | Update Job</title>
+          </Helmet>
               <div  className="min-h-screen flex items-center justify-center bg-purple-100">
 <form onSubmit={handleUpdateJobs} className="bg-white p-8 rounded-lg shadow-lg py-10 w-[1000px]">
   <h1 className="text-center text-purple-700 font-semibold text-2xl">Update Jobs</h1>

@@ -1,6 +1,6 @@
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import PropTypes from 'prop-types';
+
 import { useEffect, useState } from 'react';
 import TabItems from './TabItems';
 
@@ -11,7 +11,7 @@ const TabsCard = ({ tabs }) => {
   const [allData, setAlldata] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/allJobs')
+    fetch('https://luxe-market-pro-server-side.vercel.app/allJobs')
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -74,8 +74,5 @@ const TabsCard = ({ tabs }) => {
   );
 };
 
-TabsCard.propTypes = {
-  tabs: PropTypes.array.isRequired, // Use array instead of node for tabs prop
-};
 
 export default TabsCard;

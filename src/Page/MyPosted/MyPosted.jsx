@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const MyPosted = () => {
     const {user} = useAuth()
     const [users, setUsers] = useState([])
     console.log(user);
-    const url = `http://localhost:5000/myPost?email=${user?.email}`
+    const url = `https://luxe-market-pro-server-side.vercel.app/myPost?email=${user?.email}`
     useEffect(() => {
         fetch(url, {credentials: "include"})
         .then(res => res.json())
@@ -31,7 +32,7 @@ const MyPosted = () => {
          if (result.isConfirmed) {
        
 
-         fetch(`http://localhost:5000/myPost/${_id}`, {
+         fetch(`https://luxe-market-pro-server-side.vercel.app/myPost/${_id}`, {
              method: "DELETE"
             
          })
@@ -56,6 +57,9 @@ const MyPosted = () => {
  
     return (
         <div className="">
+             <Helmet>
+                <title>Luxe Market Pro | My Post</title>
+            </Helmet>
             {/* You can open the modal using document.getElementById('ID').showModal() method */}
 
         <div className="overflow-x-auto h-[800px] mx-3 mt-10">

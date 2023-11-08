@@ -50,23 +50,10 @@ const Navbar = () => {
           }}
           to="/myPosted"
         >
-          My Posted
+          My Posted Jobs
         </NavLink>
       </li>
-      <li className="text-slate-900 text-lg font-bold">
-        <NavLink
-          style={({ isActive }) => {
-            return {
-              fontWeight: isActive ? "bold" : "",
-              backgroundColor: isActive ? "white" : "",
-              color: isActive ? "#c84fcb" : "",
-            };
-          }}
-          to="/jobs"
-        >
-          Jobs
-        </NavLink>
-      </li>
+ 
       <li className="text-slate-900 text-lg font-bold">
         <NavLink
           style={({ isActive }) => {
@@ -171,9 +158,7 @@ const Navbar = () => {
               <Link to="/login" className="btn px-5 mr-3 py-2  rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
                 Login
               </Link>
-              <Link to="/register" className="btn px-5 mr-3 py-2  rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
-                Register
-              </Link>
+           
             </>
           )}
         </div>

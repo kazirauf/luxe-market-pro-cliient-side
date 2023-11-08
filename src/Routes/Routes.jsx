@@ -38,7 +38,7 @@ const router = createBrowserRouter([
             {
                 path: '/jobsDetails/:id',
                 element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/alljobs/${params.id}`)
+                loader: ({params}) => fetch(`https://luxe-market-pro-server-side.vercel.app/alljobs/${params.id}`)
             },
             {
                 path: '/myBids',
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
             {
                 path: '/updateJobs/:id',
                 element: <UpdateJobs></UpdateJobs>,
-                loader: ({params}) => fetch(`http://localhost:5000/alljobs/${params.id}`)
+                loader: ({params}) => fetch(`https://luxe-market-pro-server-side.vercel.app/alljobs/${params.id}`)
             },
             {
                 path: '/bidRequests',

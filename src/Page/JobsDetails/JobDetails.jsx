@@ -1,22 +1,22 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const JobDetails = () => {
   const data = useLoaderData();
   const { user } = useAuth();
+  const navigate = useNavigate()
   const [status, setStatus] = useState('Pending');
   console.log(data);
   const {
     jobTitle,
     email,
-    _id,
     deadline,
     description,
     minimumPrice,
     maximumPrice,
-    category,
   } = data;
 
   const handleAddBid = (event) => {
@@ -29,7 +29,7 @@ const JobDetails = () => {
       const product = {price, deadline, buyer_email, status, email, jobTitle}
       console.log(product);
 
-      fetch(`http://localhost:5000/jobsBids`, {
+      fetch(`https://luxe-market-pro-server-side.vercel.app/jobsBids`, {
          method: 'POST',
          headers: {
             'content-type': 'application/json'
@@ -46,12 +46,16 @@ const JobDetails = () => {
             icon: 'success',
             confirmButtonText: 'Done'
           })
+          navigate("/myBids")
         }
       })
 
     }
   return (
     <section className="bg-purple-100">
+      <Helmet>
+            <title>Luxe Market Pro | Job Details</title>
+          </Helmet>
       <div>
         <div className="flex justify-center pt-10">
           <div className="card bg-primary  w-[800px] bg-gradient-to-r from-purple-500 to-pink-500 text-white">

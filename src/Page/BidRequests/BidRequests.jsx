@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const BidRequests = () => {
     const {user} = useAuth()
     const [status, setStatus] = useState("in progress");
-    const [cStatus, setCStatus] = useState("canceled");
-
+    const [cStatus, setCStatus] = useState("rejected");
+    const [isHidden, setIsHidden] = useState(false);
     const [bids, setBids] = useState([])
    
     console.log(bids);
-    const url = `http://localhost:5000/bidRequest?buyer_email=${user?.email}`
+    const url = `https://luxe-market-pro-server-side.vercel.app/bidRequest?buyer_email=${user?.email}`
     useEffect(() => {
         fetch(url, {credentials: "include"})
         .then(res => res.json())
@@ -23,9 +24,9 @@ const BidRequests = () => {
 
     const handleRejects = (_id) => {
     const updateJobs = {status: cStatus}
-              
+    setIsHidden(current => !current);
         
-              fetch(`http://localhost:5000/jobsBids/${_id}`, {
+              fetch(`https://luxe-market-pro-server-side.vercel.app/jobsBids/${_id}`, {
                  method: 'PUT',
                  headers: {
                     'content-type': 'application/json'
@@ -38,10 +39,11 @@ const BidRequests = () => {
                 if(data.modifiedCount > 0) {
                   Swal.fire({
                     title: 'success!',
-                    text: 'job update successfully',
+                    text: 'rejected successfully',
                     icon: 'success',
                     confirmButtonText: 'OK'
                   })
+               
                 }
               })
         
@@ -50,9 +52,9 @@ const BidRequests = () => {
     }
     const handleAccept = (_id) => {
     const updateJobs = {status}
-              
+    setIsHidden(current => !current);
         
-              fetch(`http://localhost:5000/jobsBids/${_id}`, {
+              fetch(`https://luxe-market-pro-server-side.vercel.app/jobsBids/${_id}`, {
                  method: 'PUT',
                  headers: {
                     'content-type': 'application/json'
@@ -65,12 +67,14 @@ const BidRequests = () => {
                 if(data.modifiedCount > 0) {
                   Swal.fire({
                     title: 'success!',
-                    text: 'job update successfully',
+                    text: 'In progress successfully',
                     icon: 'success',
                     confirmButtonText: 'OK'
                   })
+                   
                 }
               })
+
         
             
        
@@ -79,6 +83,9 @@ const BidRequests = () => {
 
     return (
         <div>
+             <Helmet>
+                <title>Luxe Market Pro | Bids Requests</title>
+            </Helmet>
              <div>
     <div className="overflow-x-auto h-[800px] mx-3 mt-10">
           <table className="table">
@@ -120,31 +127,34 @@ const BidRequests = () => {
                  </div>
                <td>
                <div className="lg:flex-row grid grid-cols-1">
-              {
-                 t.status === "in progress" || t.status === "canceled" || t.status === 'Complete' ?
+            
 
-                 <div className="hidden">
+              
+                 {  t.status === "Pending"   ?
+                     
+                     <div  style={{ display: isHidden ? 'none' : 'block' }}  >
                     
-                    <button onClick={() => handleAccept(t._id)}  className="btn bg-gradient-to-r from-green-600 to-green-400 text-white btn-xs">
-                    Accept
-                    </button>
-                  
-                    <button onClick={() => handleRejects(t._id)}  className="btn bg-gradient-to-r from-red-500 to-pink-300 text-white btn-xs">
-                    Reject 
-                    </button>
-                 </div>
-                 :
-                 <div className="">
+                     <button onClick={() => handleAccept(t._id)}  className="btn bg-gradient-to-r from-green-600 to-green-400 text-white btn-xs">
+                     Accept
+                     </button>
+                   
+                     <button onClick={() => handleRejects(t._id)}  className="btn bg-gradient-to-r from-red-500 to-pink-300 text-white btn-xs">
+                     Reject 
+                     </button>
+                  </div>
+                     :
+                     <div className="hidden" >
                     
-                 <button onClick={() => handleAccept(t._id)}  className="btn bg-gradient-to-r from-green-600 to-green-400 text-white btn-xs">
-                 Accept
-                 </button>
-               
-                 <button onClick={() => handleRejects(t._id)}  className="btn bg-gradient-to-r from-red-500 to-pink-300 text-white btn-xs">
-                 Reject 
-                 </button>
-              </div>
-              }
+                     <button onClick={() => handleAccept(t._id)}  className="btn bg-gradient-to-r from-green-600 to-green-400 text-white btn-xs">
+                     Accept
+                     </button>
+                   
+                     <button onClick={() => handleRejects(t._id)}  className="btn bg-gradient-to-r from-red-500 to-pink-300 text-white btn-xs">
+                     Reject 
+                     </button>
+                  </div>
+                  }
+     
                   
                   
                  </div>

@@ -1,9 +1,12 @@
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 
 
 const AddJobs = () => {
     const {user} = useAuth()
+    const navigate = useNavigate()
     const handleAddProduct = (event) => {
         event.preventDefault()
           const form = event.target;
@@ -17,7 +20,7 @@ const AddJobs = () => {
           const product = {email, jobTitle, deadline, description, category, minimumPrice, maximumPrice}
           console.log(product);
     
-          fetch(`http://localhost:5000/addJobs`, {
+          fetch(`https://luxe-market-pro-server-side.vercel.app/addJobs`, {
              method: 'POST',
              headers: {
                 'content-type': 'application/json'
@@ -34,12 +37,16 @@ const AddJobs = () => {
                 icon: 'success',
                 confirmButtonText: 'Done'
               })
+              navigate('/myPosted')
             }
           })
     
         }
     return (
         <div>
+          <Helmet>
+            <title>Luxe Market Pro | Add Jobs</title>
+          </Helmet>
         <div  className="min-h-screen flex items-center justify-center bg-purple-100">
 <form onSubmit={handleAddProduct} className="bg-white p-8 rounded-lg shadow-lg py-10 w-[1000px]">
   <h1 className="text-center text-purple-700 font-semibold text-2xl">Add Jobs</h1>

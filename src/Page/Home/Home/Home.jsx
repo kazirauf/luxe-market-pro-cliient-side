@@ -5,17 +5,21 @@ import Banner from "../Banner/Banner";
 import TabsCard from "../Tabs/TabsCard";
 
 import UserComments from "../UserComments/UserComments";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
     const [tabs, setTabs] = useState([])
     console.log(tabs);
     useEffect(() => {
-        fetch('http://localhost:5000/tabsCategory')
+        fetch('https://luxe-market-pro-server-side.vercel.app/tabsCategory')
         .then(res => res.json())
         .then(data => setTabs(data))
     }, [])
     return (
         <div>
+            <Helmet>
+                <title>Luxe Market Pro | Home</title>
+            </Helmet>
             <Banner></Banner>
             <TabsCard tabs={tabs}></TabsCard>
             <UserComments></UserComments>
