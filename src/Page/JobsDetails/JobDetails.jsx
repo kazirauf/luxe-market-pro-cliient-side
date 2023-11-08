@@ -29,7 +29,7 @@ const JobDetails = () => {
       const product = {price, deadline, buyer_email, status, email, jobTitle}
       console.log(product);
 
-      fetch(`https://luxe-market-pro-server-side.vercel.app/jobsBids`, {
+      fetch(`https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/jobsBids`, {
          method: 'POST',
          headers: {
             'content-type': 'application/json'

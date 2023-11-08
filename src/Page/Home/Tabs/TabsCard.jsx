@@ -9,9 +9,11 @@ const TabsCard = ({ tabs }) => {
   const [dt, setDt] = useState([]);
   const [gd, setGd] = useState([]);
   const [allData, setAlldata] = useState([]);
+  console.log(allData);
 
   useEffect(() => {
-    fetch('https://luxe-market-pro-server-side.vercel.app/allJobs')
+    fetch('https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/allJobs')
+
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

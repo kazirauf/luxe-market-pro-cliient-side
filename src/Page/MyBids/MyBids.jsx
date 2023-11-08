@@ -9,7 +9,7 @@ const MyBids = () => {
     const [isHidden, setIsHidden] = useState(false);
     console.log(bids);
     console.log(bids);
-    const url = `https://luxe-market-pro-server-side.vercel.app/jobBids?email=${user?.email}`
+    const url = `https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/jobBids?email=${user?.email}`
     useEffect(() => {
         fetch(url, {credentials: "include"})
         .then(res => res.json())
@@ -26,7 +26,7 @@ const MyBids = () => {
     
                   
             
-                  fetch(`https://luxe-market-pro-server-side.vercel.app/jobsBids/${_id}`, {
+                  fetch(`https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/jobsBids/${_id}`, {
                      method: 'PUT',
                      headers: {
                         'content-type': 'application/json'

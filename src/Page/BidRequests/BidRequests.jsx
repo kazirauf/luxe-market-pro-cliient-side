@@ -12,7 +12,7 @@ const BidRequests = () => {
     const [bids, setBids] = useState([])
    
     console.log(bids);
-    const url = `https://luxe-market-pro-server-side.vercel.app/bidRequest?buyer_email=${user?.email}`
+    const url = `https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/bidRequest?buyer_email=${user?.email}`
     useEffect(() => {
         fetch(url, {credentials: "include"})
         .then(res => res.json())
@@ -26,7 +26,7 @@ const BidRequests = () => {
     const updateJobs = {status: cStatus}
     setIsHidden(current => !current);
         
-              fetch(`https://luxe-market-pro-server-side.vercel.app/jobsBids/${_id}`, {
+              fetch(`https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/jobsBids/${_id}`, {
                  method: 'PUT',
                  headers: {
                     'content-type': 'application/json'
@@ -54,7 +54,7 @@ const BidRequests = () => {
     const updateJobs = {status}
     setIsHidden(current => !current);
         
-              fetch(`https://luxe-market-pro-server-side.vercel.app/jobsBids/${_id}`, {
+              fetch(`https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/jobsBids/${_id}`, {
                  method: 'PUT',
                  headers: {
                     'content-type': 'application/json'

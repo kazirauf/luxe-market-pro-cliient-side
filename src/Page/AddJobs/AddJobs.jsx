@@ -20,7 +20,7 @@ const AddJobs = () => {
           const product = {email, jobTitle, deadline, description, category, minimumPrice, maximumPrice}
           console.log(product);
     
-          fetch(`https://luxe-market-pro-server-side.vercel.app/addJobs`, {
+          fetch(`https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/addJobs`, {
              method: 'POST',
              headers: {
                 'content-type': 'application/json'

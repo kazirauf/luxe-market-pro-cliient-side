@@ -21,7 +21,7 @@ const UpdateJobs = () => {
           const updateProduct = {maximumPrice, deadline, jobTitle, email, description, minimumPrice, category}
           
     
-          fetch(`https://luxe-market-pro-server-side.vercel.app/allJobs/${_id}`, {
+          fetch(`https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/allJobs/${_id}`, {
              method: 'PUT',
              headers: {
                 'content-type': 'application/json'
