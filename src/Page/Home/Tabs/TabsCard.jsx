@@ -46,7 +46,7 @@ const TabsCard = ({ tabs }) => {
         </TabList>
 
         <TabPanel >
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:ml-28 mt-10">
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:ml-28 ml-2 mt-10">
                 {
         wd.map(item => <TabItems item={item} key={item._id}></TabItems>)
        }
@@ -54,7 +54,7 @@ const TabsCard = ({ tabs }) => {
        
         </TabPanel>
         <TabPanel >
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:ml-28 mt-10">
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:ml-28 ml-2 mt-10">
                 {
         dt.map(item => <TabItems item={item} key={item._id}></TabItems>)
        }
@@ -62,7 +62,7 @@ const TabsCard = ({ tabs }) => {
           </div>
                 </TabPanel>
         <TabPanel >
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:ml-28 mt-10">
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:ml-28 ml-2 mt-10">
                 {
         gd.map(item => <TabItems item={item} key={item._id}></TabItems>)
        }

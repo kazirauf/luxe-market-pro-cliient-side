@@ -2,11 +2,10 @@ import { ToastContainer, toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 const Register = () => {
   const {signInWithProvider, createUser} = useAuth()
-    const h = () => {
-        toast("helo")
-    }
+const navigate = useNavigate()
     const handleRegister = e => {
         e.preventDefault();
              const form = new FormData(e.currentTarget)
@@ -44,6 +43,7 @@ const Register = () => {
              .then(result => {
                const user = result.user;
                console.log(user);
+               navigate("/")
              updateProfile(result.user, {
                  displayName: name, 
                  photoURL: image
@@ -67,6 +67,7 @@ const Register = () => {
         .then(result => {
             const user = result.user;
              console.log(user);
+             navigate("/")
         })
         .catch(error => {
             console.error(error.message);
