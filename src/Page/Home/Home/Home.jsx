@@ -11,7 +11,7 @@ const Home = () => {
     const [tabs, setTabs] = useState([])
     console.log(tabs);
     useEffect(() => {
-        fetch('https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/tabsCategory')
+        fetch('https://luxe-market-pro-server-side.vercel.app/tabsCategory')
         .then(res => res.json())
         .then(data => setTabs(data))
     }, [])

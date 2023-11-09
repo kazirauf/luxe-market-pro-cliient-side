@@ -9,7 +9,7 @@ const MyBids = () => {
     const [isHidden, setIsHidden] = useState(false);
     console.log(bids);
     console.log(bids);
-    const url = `https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/jobBids?email=${user?.email}`
+    const url = `https://luxe-market-pro-server-side.vercel.app/jobBids?email=${user?.email}`
     useEffect(() => {
         fetch(url, {credentials: "include"})
         .then(res => res.json())
@@ -26,7 +26,7 @@ const MyBids = () => {
     
                   
             
-                  fetch(`https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/jobsBids/${_id}`, {
+                  fetch(`https://luxe-market-pro-server-side.vercel.app/jobsBids/${_id}`, {
                      method: 'PUT',
                      headers: {
                         'content-type': 'application/json'
@@ -103,7 +103,7 @@ const MyBids = () => {
               <div className="lg:flex-row grid grid-cols-1">
             
                <td >
-                  { t.status === "in progress"   ?
+                  { t.status === "In progress"   ?
                      <button  style={{ display: isHidden ? 'none' : 'block' }} onClick={() => handleComplete(t._id)} className="bg-gradient-to-r rounded-lg from-purple-500 to-pink-500 text-white btn-sm">Complete</button>
                      :
                      <button className="bg-gradient-to-r hidden rounded-lg from-purple-500 to-pink-500 text-white btn-sm">Complete</button>

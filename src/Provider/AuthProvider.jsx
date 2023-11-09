@@ -47,13 +47,13 @@ const AuthProviders = ({children}) => {
             setLoading(false);
            
             if (currentUser) {
-                axios.post('https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/jwt', loggedUser, { withCredentials: true })
+                axios.post('https://luxe-market-pro-server-side.vercel.app/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log('token response', res.data);
                     })
             }
             else {
-                axios.post('https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/logout', loggedUser, {
+                axios.post('https://luxe-market-pro-server-side.vercel.app/logout', loggedUser, {
                     withCredentials: true
                 })
                     .then(res => {

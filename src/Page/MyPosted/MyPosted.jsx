@@ -8,7 +8,7 @@ const MyPosted = () => {
     const {user} = useAuth()
     const [users, setUsers] = useState([])
     console.log(user);
-    const url = `https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/myPost?email=${user?.email}`
+    const url = `https://luxe-market-pro-server-side.vercel.app/myPost?email=${user?.email}`
     useEffect(() => {
         fetch(url, {credentials: "include"})
         .then(res => res.json())
@@ -32,7 +32,7 @@ const MyPosted = () => {
          if (result.isConfirmed) {
        
 
-         fetch(`https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/myPost/${_id}`, {
+         fetch(`https://luxe-market-pro-server-side.vercel.app/myPost/${_id}`, {
              method: "DELETE"
             
          })

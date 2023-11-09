@@ -6,13 +6,14 @@ import { Helmet } from "react-helmet-async";
 
 const BidRequests = () => {
     const {user} = useAuth()
-    const [status, setStatus] = useState("in progress");
-    const [cStatus, setCStatus] = useState("rejected");
+    const [relode, setReload] = useState(true)
+    const [status, setStatus] = useState("In progress");
+    const [cStatus, setCStatus] = useState("Rejected");
     const [isHidden, setIsHidden] = useState(false);
     const [bids, setBids] = useState([])
    
     console.log(bids);
-    const url = `https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/bidRequest?buyer_email=${user?.email}`
+    const url = `https://luxe-market-pro-server-side.vercel.app/bidRequest?buyer_email=${user?.email}`
     useEffect(() => {
         fetch(url, {credentials: "include"})
         .then(res => res.json())
@@ -20,13 +21,13 @@ const BidRequests = () => {
             console.log(data);
             setBids(data)
         })
-    }, [])
+    }, [relode])
 
     const handleRejects = (_id) => {
     const updateJobs = {status: cStatus}
     setIsHidden(current => !current);
         
-              fetch(`https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/jobsBids/${_id}`, {
+              fetch(`https://luxe-market-pro-server-side.vercel.app/jobsBids/${_id}`, {
                  method: 'PUT',
                  headers: {
                     'content-type': 'application/json'
@@ -39,11 +40,11 @@ const BidRequests = () => {
                 if(data.modifiedCount > 0) {
                   Swal.fire({
                     title: 'success!',
-                    text: 'rejected successfully',
+                    text: 'Rejected successfully',
                     icon: 'success',
                     confirmButtonText: 'OK'
                   })
-               
+                  setReload(!relode)
                 }
               })
         
@@ -54,7 +55,7 @@ const BidRequests = () => {
     const updateJobs = {status}
     setIsHidden(current => !current);
         
-              fetch(`https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/jobsBids/${_id}`, {
+              fetch(`https://luxe-market-pro-server-side.vercel.app/jobsBids/${_id}`, {
                  method: 'PUT',
                  headers: {
                     'content-type': 'application/json'
@@ -71,6 +72,7 @@ const BidRequests = () => {
                     icon: 'success',
                     confirmButtonText: 'OK'
                   })
+                  setReload(!relode)
                    
                 }
               })

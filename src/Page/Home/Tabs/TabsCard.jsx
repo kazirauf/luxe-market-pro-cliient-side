@@ -12,7 +12,7 @@ const TabsCard = ({ tabs }) => {
   console.log(allData);
 
   useEffect(() => {
-    fetch('https://luxe-market-pro-server-side-jemzsej5n-kazirauf.vercel.app/allJobs')
+    fetch('https://luxe-market-pro-server-side.vercel.app/allJobs')
 
       .then((res) => res.json())
       .then((data) => {
