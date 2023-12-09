@@ -11,7 +11,7 @@ const AboutUs = () => {
     <div>
       <h1 className="text-5xl font-bold">We provide jobs to people successfully</h1>
       
-      <p className="py-6">We take pride in our ability to consistently provide successful job opportunities to individuals. Our dedicated team works diligently to match candidates with the right positions, resulting in fulfilling and prosperous careers for countless people. Our track record of accomplishment in this regard underscores our commitment to making a positive impact on individuals lives by facilitating their professional success.</p>
+      <p className="py-6">We take pride in our ability to consistently provide successful all job opportunities to individuals. Our dedicated team works diligently to match candidates with the right positions, resulting in fulfilling and prosperous careers for countless people. Our track record of accomplishment in this regard underscores our commitment to making a positive impact on individuals lives by facilitating their professional success.</p>
       <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white">See More</button>
     </div>
   </div>

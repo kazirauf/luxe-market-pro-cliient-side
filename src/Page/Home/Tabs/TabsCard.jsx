@@ -64,7 +64,7 @@ const TabsCard = ({ tabs }) => {
         <TabPanel >
           <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:ml-28 ml-2 mt-10">
                 {
-        gd.map(item => <TabItems item={item} key={item._id}></TabItems>)
+        gd.map(item => <TabItems   ems item={item} key={item._id}></TabItems>)
        }
 
           </div>
