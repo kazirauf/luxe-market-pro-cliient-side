@@ -10,7 +10,7 @@ Currently, two official plugins are available:
 
 ## Live Site: https://luxe-market-pro.web.app/
 
-## Live Site: https://github.com/kazirauf/luxe-market-pro-server-side
+## Server side repo: https://github.com/kazirauf/luxe-market-pro-server-side
 
 #6  features or functionalities of my project:
 
