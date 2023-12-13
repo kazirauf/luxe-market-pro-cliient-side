@@ -28,6 +28,10 @@ Currently, two official plugins are available:
 
 7. **Feature 7**: Login And Register
 
+8. **Feature 8**: Help Center functionalities
+
+9. **Feature 9**: Intuitive Job Posting
+
 Descriptions: 
 
 Experience the allure of Luxe-Market-Pro, where you not only post jobs but wield the power to
