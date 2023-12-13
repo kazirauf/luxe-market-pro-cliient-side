@@ -82,6 +82,20 @@ const Navbar = () => {
           Bid Requests
         </NavLink>
       </li>
+      <li className="text-slate-900 text-lg font-bold">
+        <NavLink
+          style={({ isActive }) => {
+            return {
+              fontWeight: isActive ? "bold" : "",
+              backgroundColor: isActive ? "white" : "",
+              color: isActive ? "#c84fcb" : "",
+            };
+          }}
+          to="/helpCenter"
+        >
+         Help Center
+        </NavLink>
+      </li>
     </>
   );
   return (

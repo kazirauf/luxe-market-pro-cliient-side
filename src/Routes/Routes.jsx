@@ -11,6 +11,7 @@ import UpdateJobs from "../Page/MyPosted/UpdateJobs";
 import BidRequests from "../Page/BidRequests/BidRequests";
 import Route404 from "./Route404";
 import PrivateRoute from "./PrivateRoute";
+import HelpCenter from "../Page/HelpCenter/HelpCenter";
 
 
 const router = createBrowserRouter([
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
             {
                 path: '/bidRequests',
                 element: <PrivateRoute><BidRequests></BidRequests></PrivateRoute>
+            },
+            {
+                path: '/helpCenter',
+                element: <HelpCenter></HelpCenter>
             }
            
         ]
